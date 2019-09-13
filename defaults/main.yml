@@ -1,4 +1,4 @@
 ---
-# empty main.yml for defaults 
+freeradius_state: present
+freeradius_users: []  # list of dict(username, password)
 ...
-

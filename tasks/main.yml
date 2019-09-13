@@ -1,4 +1,10 @@
 ---
-# empty main.yml for tasks 
+- name: 'install package'
+  apt:
+    name: freeradius
+    state: '{{freeradius_state}}'
+  become: true
+  tags:
+  - freeradius
+  - freeradius-pkg
 ...
-
