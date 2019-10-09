@@ -5,6 +5,6 @@
     state: '{{freeradius_state}}'
   become: true
   tags:
-  - freeradius
-  - freeradius-pkg
+  - ct-freeradius
+  - ct-freeradius-pkg
 ...
