@@ -1,0 +1,6 @@
+---
+- name: handler_restart_freeradius
+  systemd:
+    name: '{{freeradius_service}}'
+  become: true
+...

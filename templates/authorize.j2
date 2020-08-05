@@ -1,0 +1,18 @@
+# start
+# users {{freeradius_users|length}}
+{% for username, password in freeradius_users.items() %}
+{{username}} Cleartext-Password := "{{password}}"
+{% endfor %}
+# settings
+DEFAULT	Framed-Protocol == PPP
+	Framed-Protocol = PPP,
+	Framed-Compression = Van-Jacobson-TCP-IP
+
+DEFAULT	Hint == "CSLIP"
+	Framed-Protocol = SLIP,
+	Framed-Compression = Van-Jacobson-TCP-IP
+
+DEFAULT	Hint == "SLIP"
+	Framed-Protocol = SLIP
+# end
+

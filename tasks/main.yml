@@ -1,10 +1,27 @@
 ---
 - name: 'install package'
   apt:
-    name: freeradius
+    name: '{{freeradius_pkgs}}'
     state: '{{freeradius_state}}'
   become: true
   tags:
   - ct-freeradius
-  - ct-freeradius-pkg
+
+- name: 'render proxy.conf'
+  template:
+    dest: '{{freeradius_etc_dir}}/{{freeradius_version}}/proxy.conf'
+    src: proxy.conf.j2
+  notify: handler_restart_freeradius
+  become: true
+  tags:
+  - ct-freeradius
+
+- name: 'render authorization file'
+  template:
+    dest: '{{freeradius_etc_dir}}/{{freeradius_version}}/mods-config/files/authorize'
+    src: authorize.j2
+  notify: handler_restart_freeradius
+  become: true
+  tags:
+  - ct-freeradius
 ...
