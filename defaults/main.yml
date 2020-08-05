@@ -3,6 +3,6 @@ freeradius_etc_dir: /etc/freeradius
 freeradius_pkgs: ['freeradius']
 freeradius_state: present
 freeradius_service: freeradius
-freeradius_users: {} # username: password
+freeradius_users: {}  # username: password
 freeradius_version: '3.0'  # tells us where the config is
 ...
