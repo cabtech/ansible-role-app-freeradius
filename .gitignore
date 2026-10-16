@@ -1,5 +1,4 @@
-# ansible-role-app-freeradius
-.alint
-.ylint
 .ansible/
 src/
+#
+.lint*

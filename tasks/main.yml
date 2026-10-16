@@ -1,27 +1,26 @@
 ---
-- name: 'install package'
-  apt:
-    name: '{{freeradius_pkgs}}'
-    state: '{{freeradius_state}}'
+- name: "Install package"
+  ansible.builtin.apt:
+    name: "{{ freeradius_pkgs }}"
+    state: "{{ freeradius_state }}"
   become: true
-  tags:
-  - ct-freeradius
+  tags: ["ct-freeradius"]
 
-- name: 'render proxy.conf'
-  template:
-    dest: '{{freeradius_etc_dir}}/{{freeradius_version}}/proxy.conf'
+- name: "Render proxy.conf"
+  ansible.builtin.template:
+    dest: "{{ freeradius_etc_dir }}/{{ freeradius_version }}/proxy.conf"
+    mode: "0644"
     src: proxy.conf.j2
-  notify: handler_restart_freeradius
+  notify: HandlerRestartFreeradius
   become: true
-  tags:
-  - ct-freeradius
+  tags: ["ct-freeradius"]
 
-- name: 'render authorization file'
-  template:
-    dest: '{{freeradius_etc_dir}}/{{freeradius_version}}/mods-config/files/authorize'
+- name: "Render authorization file"
+  ansible.builtin.template:
+    dest: "{{ freeradius_etc_dir }}/{{ freeradius_version }}/mods-config/files/authorize"
+    mode: "0644"
     src: authorize.j2
-  notify: handler_restart_freeradius
+  notify: HandlerRestartFreeradius
   become: true
-  tags:
-  - ct-freeradius
+  tags: ["ct-freeradius"]
 ...
