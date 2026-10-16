@@ -3,6 +3,7 @@
 ignore: |
   virtualenv/
   venv/
+  .venv/
 
 extends: default
 
